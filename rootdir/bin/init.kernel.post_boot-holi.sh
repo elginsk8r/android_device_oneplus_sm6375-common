@@ -153,6 +153,7 @@ function oplus_configure_hybridswap() {
 	echo systemserver > /dev/memcg/system/memory.name
 }
 #endif /*OPLUS_FEATURE_ZRAM_OPT*/
+
 function configure_read_ahead_kb_values() {
 	MemTotalStr=`cat /proc/meminfo | grep MemTotal`
 	MemTotal=${MemTotalStr:16:8}
@@ -179,6 +180,8 @@ function configure_read_ahead_kb_values() {
 
 function configure_memory_parameters() {
 	# Set Memory parameters.
+        MemTotalStr=`cat /proc/meminfo | grep MemTotal`
+        MemTotal=${MemTotalStr:16:8}
 
 #ifdef OPLUS_FEATURE_ZRAM_OPT
 	# For vts test which has replace system.img
@@ -198,8 +201,11 @@ function configure_memory_parameters() {
 	configure_read_ahead_kb_values
 	echo 0 > /proc/sys/vm/page-cluster
 
-	echo 16 > /proc/sys/vm/watermark_scale_factor
-
+        if [ $MemTotal -le 8388608 ]; then
+		echo 32 > /proc/sys/vm/watermark_scale_factor
+	else
+		echo 16 > /proc/sys/vm/watermark_scale_factor
+	fi
 	echo 0 > /proc/sys/vm/watermark_boost_factor
 #ifndef OPLUS_FEATURE_ZRAM_OPT
 #	echo 100 > /proc/sys/vm/swappiness

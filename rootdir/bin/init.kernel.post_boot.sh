@@ -238,6 +238,7 @@ function configure_memory_parameters() {
 	# Disable wsf for all targets beacause we are using efk.
 	# wsf Range : 1..1000 So set to bare minimum value 1.
 	echo 1 > /proc/sys/vm/watermark_scale_factor
+        echo 15000 > /proc/sys/vm/watermark_boost_factor
 #ifdef OPLUS_FEATURE_ZRAM_OPT
 # For vts test which has replace system.img
 	ls -l /product | grep '\-\>'
