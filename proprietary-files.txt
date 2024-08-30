@@ -1,4 +1,4 @@
-# Proprietary files - from RMX3471_14.0.0.700(EX01) build, unless pinned
+# Proprietary files - from RMX3471_14.0.0.800(EX01) build, unless pinned
 
 # ADSP
 vendor/bin/adsprpcd
@@ -242,7 +242,6 @@ vendor/lib64/libhdr_tm.so
 # Display (HWC)
 vendor/bin/qdcmss
 vendor/etc/init/qdcmss.rc
-vendor/etc/snapdragon_color_libs_config.xml
 vendor/lib64/libdpps.so
 vendor/lib64/libqdcm-mode-parser.so
 vendor/lib64/libsnapdragoncolor-manager.so
