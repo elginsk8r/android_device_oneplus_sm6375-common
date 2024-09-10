@@ -68,6 +68,10 @@ fi
 
 function blob_fixup() {
     case "${1}" in
+        odm/lib64/libwvhidl.so|odm/lib64/mediadrm/libwvdrmengine.so)
+            [ "$2" = "" ] && return 0
+            grep -q "libcrypto_shim.so" "${2}" || "${PATCHELF}" --add-needed "libcrypto_shim.so" "${2}"
+            ;;
         system_ext/lib64/libwfdnative.so)
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --remove-needed "android.hidl.base@1.0.so" "${2}"
