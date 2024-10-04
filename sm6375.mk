@@ -319,7 +319,7 @@ PRODUCT_PACKAGES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
-    android.hardware.sensors-service.multihal
+    android.hardware.sensors-service.oplus-multihal
 
 # Shipping API
 BOARD_SHIPPING_API_LEVEL := 30
