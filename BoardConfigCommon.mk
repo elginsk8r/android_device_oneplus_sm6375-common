@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-COMMON_PATH := device/realme/sm6375-common
+COMMON_PATH := device/oneplus/sm6375-common
 
 BUILD_BROKEN_DUP_RULES := true
 BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
@@ -99,7 +99,7 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 
 BOARD_RAMDISK_USE_LZ4 := true
 
-TARGET_KERNEL_SOURCE := kernel/realme/sm6375
+TARGET_KERNEL_SOURCE := kernel/oneplus/sm6375
 TARGET_KERNEL_CONFIG := vendor/holi-qgki_defconfig vendor/debugfs.config
 
 # Kernel modules
@@ -229,4 +229,4 @@ WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # Inherit the proprietary files
-include vendor/realme/sm6375-common/BoardConfigVendor.mk
+include vendor/oneplus/sm6375-common/BoardConfigVendor.mk

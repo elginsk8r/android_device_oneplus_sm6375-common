@@ -498,4 +498,4 @@ PRODUCT_BOOT_JARS += \
     WfdCommon
 
 # Inherit the proprietary files
-$(call inherit-product, vendor/realme/sm6375-common/sm6375-common-vendor.mk)
+$(call inherit-product, vendor/oneplus/sm6375-common/sm6375-common-vendor.mk)
