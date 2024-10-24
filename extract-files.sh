@@ -64,26 +64,30 @@ fi
 
 function blob_fixup() {
     case "${1}" in
+        odm/lib/liblvimfs_wrapper.so|odm/lib64/libCOppLceTonemapAPI.so|odm/lib64/libaps_frame_registration.so)
+            [ "$2" = "" ] && return 0
+            "${PATCHELF}" --replace-needed "libstdc++.so" "libstdc++_vendor.so" "${2}"
+            ;;
         odm/lib64/libwvhidl.so|odm/lib64/mediadrm/libwvdrmengine.so)
             [ "$2" = "" ] && return 0
             grep -q "libcrypto_shim.so" "${2}" || "${PATCHELF}" --add-needed "libcrypto_shim.so" "${2}"
+            ;;
+        product/etc/sysconfig/com.android.hotwordenrollment.common.util.xml)
+            [ "$2" = "" ] && return 0
+            sed -i "s/\/my_product/\/product/" "${2}"
+            ;;
+        system_ext/lib/libwfdmmsrc_system.so)
+            [ "$2" = "" ] && return 0
+            grep -q "libgui_shim.so" "${2}" || "${PATCHELF}" --add-needed "libgui_shim.so" "${2}"
             ;;
         system_ext/lib64/libwfdnative.so)
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --remove-needed "android.hidl.base@1.0.so" "${2}"
             grep -q "libinput_shim.so" "${2}" || "${PATCHELF}" --add-needed "libinput_shim.so" "${2}"
             ;;
-        system_ext/lib/libwfdmmsrc_system.so)
-            [ "$2" = "" ] && return 0
-            grep -q "libgui_shim.so" "${2}" || "${PATCHELF}" --add-needed "libgui_shim.so" "${2}"
-            ;;
         system_ext/lib64/libwfdservice.so|system_ext/lib/libwfdservice.so)
             [ "$2" = "" ] && return 0
             "${PATCHELF}" --replace-needed "android.media.audio.common.types-V2-cpp.so" "android.media.audio.common.types-V3-cpp.so" "${2}"
-            ;;
-        product/etc/sysconfig/com.android.hotwordenrollment.common.util.xml)
-            [ "$2" = "" ] && return 0
-            sed -i "s/\/my_product/\/product/" "${2}"
             ;;
         vendor/etc/media_*/video_system_specs.json)
             [ "$2" = "" ] && return 0
@@ -92,10 +96,6 @@ function blob_fixup() {
         vendor/etc/media_codecs.xml|vendor/etc/media_codecs_blair.xml|vendor/etc/media_codecs_holi.xml)
             [ "$2" = "" ] && return 0
             sed -Ei "/media_codecs_(google_audio|google_c2|google_telephony|vendor_audio)/d" "${2}"
-            ;;
-        odm/lib/liblvimfs_wrapper.so|odm/lib64/libCOppLceTonemapAPI.so|odm/lib64/libaps_frame_registration.so)
-            [ "$2" = "" ] && return 0
-            "${PATCHELF}" --replace-needed "libstdc++.so" "libstdc++_vendor.so" "${2}"
             ;;
         *)
             return 1
