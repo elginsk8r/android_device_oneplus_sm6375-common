@@ -61,6 +61,10 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('android.hidl.base@1.0.so', 'libhidlbase.so')
         .add_needed('libbinder_shim.so')
         .add_needed('libinput_shim.so'),
+    'vendor/bin/init.kernel.post_boot-blair.sh': blob_fixup()
+        .patch_file('blob-patches/init-post-boot-blair.patch'),
+    'vendor/bin/init.kernel.post_boot-holi.sh': blob_fixup()
+        .patch_file('blob-patches/init-post-boot-holi.patch'),
     'vendor/etc/media_holi/video_system_specs.json': blob_fixup()
         .regex_replace('"max_retry_alloc_output_timeout": 2000,', '"max_retry_alloc_output_timeout": 0,'),
 }  # fmt: skip

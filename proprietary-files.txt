@@ -577,10 +577,13 @@ vendor/lib64/vendor.qti.imsrtpservice@3.0.so;MODULE_SUFFIX=-vendor
 # IRQ balance
 vendor/bin/msm_irqbalance
 
-# Kernel
-vendor/bin/init.qti.kernel.sh
-vendor/bin/vendor_modprobe.sh
-vendor/etc/init/hw/init.qti.kernel.rc
+# Kernel - from Fogos U1UGS34.23-110-2-1
+vendor/bin/init.kernel.post_boot-blair.sh|cd5ce1032fc750f545adea3b67066853e81d020c|7e187ca6573ce0815daac9d8a79e0f6d1142209f
+vendor/bin/init.kernel.post_boot-holi.sh|85a6a76b21db596bf06180a83a7b6369af773293|da69f675aa706fd6c13d17892157bf471cdf5d9a
+vendor/bin/init.kernel.post_boot.sh|a6b39a91a61c92a42dff1f8565f37917c60827f4
+vendor/bin/init.qti.kernel.sh|1c17e31a8edfc0b188802d280af9a85038f96b60
+vendor/bin/vendor_modprobe.sh|d6f572abb7aba5c12077607ec18c221388b86394
+vendor/etc/init/hw/init.qti.kernel.rc|91245b402447c148f770abe09c416c05c6757a21
 
 # Keymaster
 vendor/bin/hw/android.hardware.keymaster@4.1-service-qti

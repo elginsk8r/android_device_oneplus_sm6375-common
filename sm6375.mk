@@ -145,9 +145,6 @@ PRODUCT_PACKAGES += \
     fstab.default \
     fstab.default.vendor_ramdisk \
     init.class_main.sh \
-    init.kernel.post_boot-blair.sh \
-    init.kernel.post_boot-holi.sh \
-    init.kernel.post_boot.sh \
     init.oplus.rc \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
