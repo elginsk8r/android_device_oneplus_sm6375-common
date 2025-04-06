@@ -20,7 +20,6 @@ from extract_utils.main import (
 namespace_imports = [
     'device/oneplus/sm6375-common',
     'hardware/oplus',
-    'hardware/qcom-caf/common/libqti-perfd-client',
     'hardware/qcom-caf/sm8350',
     'hardware/qcom-caf/wlan',
     'vendor/qcom/opensource/commonsys-intf/display',
