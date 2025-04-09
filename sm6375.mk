@@ -191,12 +191,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.media.audio.common.types-V1-cpp
 
-# NFC
-PRODUCT_PACKAGES += \
-    android.hardware.nfc-service.nxp \
-    com.android.nfc_extras \
-    Tag
-
 # Overlays
 $(call inherit-product, hardware/oplus/overlay/qssi/qssi.mk)
 
